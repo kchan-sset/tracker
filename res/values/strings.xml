@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">p90x Tracker</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+    <string name="ex_chest_back">Chest and Back</string>
+	<string name="ex_shoulder_arms">Shoulder and Arms</string>
+	
+	<!--Chest & Back exercises-->
+	<string name="chest_back_ex_1">Standard Pushup</string>
+	
+	<!-- Shoulder & Arm exercies -->
+	<string name="shoulder_arm_ex_1">Standard Bicep Curl</string>
+</resources>

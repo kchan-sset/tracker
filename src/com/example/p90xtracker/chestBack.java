@@ -5,32 +5,43 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
+import android.view.View;
+import android.widget.ListView;
 
-public class chestBack extends ListActivity{
+public class chestBack extends Activity{
 
 	ArrayList<Exercise> exerciseList = new ArrayList<Exercise>();	
+	private ListView chestBackView;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.chest_back);
 		
-		exerciseList.add(new Exercise("Standard Push-Ups", "chest"));
-		exerciseList.add(new Exercise("Wide Front Pull-Ups", "back"));
-		exerciseList.add(new Exercise("Military Push-Ups", "chest"));
-		exerciseList.add(new Exercise("Reverse Grip Chin-Ups", "back"));
-		exerciseList.add(new Exercise("Wide Fly Pull-Ups", "back"));
-		exerciseList.add(new Exercise("Closed Grip Overhand Pull-Ups", "back"));
-		exerciseList.add(new Exercise("Decline Push-Ups", "chest"));
-		exerciseList.add(new Exercise("Heavy Pants", "back"));
-		exerciseList.add(new Exercise("Diamond Push-Ups", "chest"));
-		exerciseList.add(new Exercise("Lawnmowers", "back"));
-		exerciseList.add(new Exercise("Dive Bome Push-Ups", "chest"));
-		exerciseList.add(new Exercise("Back Flys", "back"));
+		Exercise exerciseList[] = new Exercise[] {
+			new Exercise("Standard Push-Ups", "chest"),
+			new Exercise("Wide Front Pull-Ups", "back"),
+			new Exercise("Military Push-Ups", "chest"),
+			new Exercise("Reverse Grip Chin-Ups", "back"),
+			new Exercise("Wide Fly Pull-Ups", "back"),
+			new Exercise("Closed Grip Overhand Pull-Ups", "back"),
+			new Exercise("Decline Push-Ups", "chest"),
+			new Exercise("Heavy Pants", "back"),
+			new Exercise("Diamond Push-Ups", "chest"),
+			new Exercise("Lawnmowers", "back"),
+			new Exercise("Dive Bome Push-Ups", "chest"),
+			new Exercise("Back Flys", "back"),
+		};
 		
-		setListAdapter(new ArrayAdapter<Exercise>(this, android.R.layout.simple_list_item_1, exerciseList));
+		ExerciseAdapter exAdapter = new ExerciseAdapter(this, R.layout.listview_item_row, exerciseList);
+		
+		chestBackView = (ListView)findViewById(R.id.chestBackView);
+		
+		View header = (View)getLayoutInflater().inflate(R.layout.listview_header_row, null);
+		chestBackView.addHeaderView(header);
+		chestBackView.setAdapter(exAdapter);
+
 	}
 
 	

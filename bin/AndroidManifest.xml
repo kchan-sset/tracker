@@ -24,6 +24,7 @@
         </activity>
         <activity android:name="com.example.p90xtracker.chestBack"></activity>
         <activity android:name="com.example.p90xtracker.shoulderArms"></activity>
+        <activity android:name="com.example.p90xtracker.trackerInput"></activity>
     </application>
 
 </manifest>

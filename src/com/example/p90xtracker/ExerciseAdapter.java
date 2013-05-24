@@ -3,22 +3,27 @@ package com.example.p90xtracker;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 public class ExerciseAdapter extends ArrayAdapter<Exercise>{
 	
+	private OnClickListener callback;
+	
 	Context context;
 	int layoutResourceId;
 	Exercise data[] = null;
 	
-	public ExerciseAdapter(Context context, int layoutResourceId, Exercise[] data)
+	
+	public ExerciseAdapter(Context context, int layoutResourceId, Exercise[] data, OnClickListener callback)
 	{
 		super(context, layoutResourceId, data);
 		this.context = context;
 		this.layoutResourceId = layoutResourceId;
 		this.data = data;
+		this.callback = callback;
 	}
 	
 	@Override
@@ -34,10 +39,15 @@ public class ExerciseAdapter extends ArrayAdapter<Exercise>{
 			holder = new ExerciseHolder();
 			holder.txtCategory = (TextView)row.findViewById(R.id.txtCategory);
 			holder.txtTitle = (TextView)row.findViewById(R.id.txtTitle);
+			holder.position = position;
 			row.setTag(holder);
 		} else {
 			holder = (ExerciseHolder)row.getTag();
 		}
+		
+		row.setOnClickListener(callback);
+
+
 		
 		Exercise exercise = data[position];
 		holder.txtCategory.setText(exercise.category);
@@ -49,6 +59,7 @@ public class ExerciseAdapter extends ArrayAdapter<Exercise>{
 	static class ExerciseHolder {
 		TextView txtCategory;
 		TextView txtTitle;
+		int position;
 	}
 }
 

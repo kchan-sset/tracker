@@ -1,25 +1,19 @@
 package com.example.p90xtracker;
 
-import java.util.ArrayList;
+import com.example.p90xtracker.ExerciseAdapter.ExerciseHolder;
 
 import android.app.Activity;
-import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
-public class chestBack extends Activity{
+public class chestBack extends Activity implements OnClickListener{
 
-	ArrayList<Exercise> exerciseList = new ArrayList<Exercise>();	
-	private ListView chestBackView;
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.chest_back);
-		
-		Exercise exerciseList[] = new Exercise[] {
+	Exercise exerciseList[] = new Exercise[] {
 			new Exercise("Standard Push-Ups", "chest"),
 			new Exercise("Wide Front Pull-Ups", "back"),
 			new Exercise("Military Push-Ups", "chest"),
@@ -33,8 +27,16 @@ public class chestBack extends Activity{
 			new Exercise("Dive Bome Push-Ups", "chest"),
 			new Exercise("Back Flys", "back"),
 		};
-		
-		ExerciseAdapter exAdapter = new ExerciseAdapter(this, R.layout.listview_item_row, exerciseList);
+	
+	private ListView chestBackView;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.chest_back);
+						
+		ExerciseAdapter exAdapter = new ExerciseAdapter(this, R.layout.listview_item_row, this.exerciseList, this);
 		
 		chestBackView = (ListView)findViewById(R.id.chestBackView);
 		
@@ -42,6 +44,25 @@ public class chestBack extends Activity{
 		chestBackView.addHeaderView(header);
 		chestBackView.setAdapter(exAdapter);
 
+	}
+	
+
+	@Override
+	public void onClick(View view) {
+		Log.i("exName", "here");
+		Intent myIntent = new Intent();
+		Bundle myBundle = new Bundle();
+
+		ExerciseHolder holder = (ExerciseHolder) view.getTag();
+		
+		Exercise currentExercise = this.exerciseList[holder.position];
+		Log.i("exName", currentExercise.getName().toString());
+		
+		myBundle.putParcelable("exercise", currentExercise);
+		myIntent.putExtras(myBundle);
+		myIntent.setClass(this, trackerInput.class);
+		startActivity(myIntent);
+		
 	}
 
 	

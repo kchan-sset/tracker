@@ -15,6 +15,52 @@
         android:id="@+id/exercise_name"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        />    
+        android:gravity="center_vertical"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:textColor="#000000"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp" />
+         />
+
+    <TextView 
+        android:id="@+id/reps_input_label"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:gravity="center_vertical"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:textColor="#000000"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp" 
+        android:text="Enter # of reps"/>
+         />
+    
+    <EditText 
+        android:id="@+id/reps_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        />
+
+    <TextView 
+        android:id="@+id/weight_input_label"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:gravity="center_vertical"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:textColor="#000000"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp" 
+        android:text="Enter # of pounds"/>
+         />
+    
+    <EditText 
+        android:id="@+id/weight_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        />
     
 </LinearLayout>
